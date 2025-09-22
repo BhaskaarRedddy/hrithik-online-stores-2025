@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hrithik Online Stores - Your trusted partner for fresh, organic groceries delivered right to your doorstep. Shop for vegetables, fruits, dairy products, and more." />
+    <meta name="keywords" content="grocery, online shopping, fresh vegetables, organic fruits, dairy products, home delivery" />
+    <meta name="author" content="Bhaskar" />
+    <title>Hrithik Online Stores - Fresh Groceries Delivered</title>
+    <link rel="icon" href="images/grocy.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .dark-mode {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      .dark-mode .header,
+      .dark-mode footer {
+        background-color: #1e1e1e;
+      }
+      .dark-mode .btn {
+        background-color: #3498db;
+        color: white;
+      }
+      .toggle-dark-mode {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: #3498db;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1000;
+      }
+      .google-maps {
+        text-align: center;
+        margin: 2rem 0;
+      }
+      .google-maps iframe {
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- Loading Screen -->
+    <div class="loading">
+      <div class="loading-text">Hrithik Online Stores</div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="toggle-dark-mode" id="darkModeToggle">Enable Dark Mode</button>
+
+    <!-- Header -->
+    <header class="header">
+      <a href="#" class="logo"><i class="fas fa-shopping-basket"></i> Hrithik Online Stores</a>
+      <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#features">features</a>
+        <a href="#products">products</a>
+        <a href="#categories">categories</a>
+      </nav>
+      <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-heart" id="wishlist-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <span id="userGreeting" class="user-greeting" style="display:none; font-size:1.4rem; margin-right:.8rem;"></span>
+        <div class="fas fa-user" id="login-btn"></div>
+      </div>
+
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box" class="fas fa-search"></label>
+      </div>
+
+      <div class="shopping-cart">
+        <div class="box">
+          <i class="fas fa-trash"></i>
+          <img src="images/watermelon.png" alt="">
+          <div class="content">
+            <h3>watermelon</h3>
+            <span class="price">₹49/-</span>
+            <span class="quantity">qty : 1</span>
+          </div>
+        </div>
+        <div class="box">
+          <i class="fas fa-trash"></i>
+          <img src="images/onion.png" alt="">
+          <div class="content">
+            <h3>onion</h3>
+            <span class="price">₹49/-</span>
+            <span class="quantity">qty : 1</span>
+          </div>
+        </div>
+        <div class="promo">
+          <input type="text" id="promoCodeInput" class="box" placeholder="Apply promo code (e.g., HRITHIK10)">
+          <button class="btn" id="applyPromoBtn">apply</button>
+        </div>
+        <div class="summary">
+          <div class="row"><span>Subtotal</span><span id="summarySubtotal">₹0/-</span></div>
+          <div class="row"><span>Discount</span><span id="summaryDiscount">- ₹0/-</span></div>
+          <div class="row grand"><span>Total</span><span id="summaryTotal">₹0/-</span></div>
+        </div>
+        <a href="#" class="btn" id="checkoutBtn">checkout</a>
+      </div>
+
+      <form action="" class="login-form">
+        <h3>login now</h3>
+        <input type="email" placeholder="your email" class="box">
+        <input type="password" placeholder="your password" class="box">
+        <p>forget your password <a href="#">click here</a></p>
+        <p>don't have an account <a href="#" id="openSignup">create now</a></p>
+        <input type="submit" value="login now" class="btn">
+      </form>
+
+      <form action="" class="signup-form" style="display:none; position: absolute; top: 110%; right: -110%; width: 30rem; box-shadow: var(--box-shadow); padding: 2rem; border-radius: .5rem; background: #fff; text-align: center;">
+        <h3>create account</h3>
+        <input type="text" placeholder="your name" class="box" required>
+        <input type="email" placeholder="your email" class="box" required>
+        <input type="password" placeholder="create password" class="box" required>
+        <p>already have an account? <a href="#" id="openLogin">login</a></p>
+        <input type="submit" value="sign up" class="btn">
+      </form>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+      <div class="content">
+        <h3>Fresh and <span>Organic</span> Products for your Home</h3>
+        <a href="#" class="btn">Shop Now</a>
+      </div>
+    </section>
+
+    <!-- Recently Viewed Section -->
+    <section class="recently-viewed" id="recentlyViewed" style="display:none;">
+      <h1 class="heading">recently <span>viewed</span></h1>
+      <div class="rv-container"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <h1 class="heading">our <span>features</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/feature-1.png" alt="Free Delivery">
+          <h3>free delivery</h3>
+        </div>
+        <div class="box">
+          <img src="images/feature-2.png" alt="Easy Payments">
+          <h3>easy payments</h3>
+        </div>
+        <div class="box">
+          <img src="images/feature-3.png" alt="24/7 Service">
+          <h3>24/7 service</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <h1 class="heading">our <span>products</span></h1>
+      <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh orange', '49', 'images/products-1.png')"></i>
+            </div>
+            <img src="images/products-1.png" alt="Fresh Orange">
+            <h3>fresh orange</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh orange" data-price="49" data-image="images/products-1.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh orange" data-price="49" data-image="images/products-1.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh onion', '49', 'images/products-2.png')"></i>
+            </div>
+            <img src="images/products-2.png" alt="Fresh Onion">
+            <h3>fresh onion</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh onion" data-price="49" data-image="images/products-2.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh onion" data-price="49" data-image="images/products-2.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh cabbage', '49', 'images/products-4.png')"></i>
+            </div>
+            <img src="images/products-4.png" alt="Fresh Cabbage">
+            <h3>fresh cabbage</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh cabbage" data-price="49" data-image="images/products-4.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh cabbage" data-price="49" data-image="images/products-4.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh potato', '49', 'images/products-5.png')"></i>
+            </div>
+            <img src="images/products-5.png" alt="Fresh Potato">
+            <h3>fresh potato</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh potato" data-price="49" data-image="images/products-5.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh potato" data-price="49" data-image="images/products-5.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh avocado', '49', 'images/products-6.png')"></i>
+            </div>
+            <img src="images/products-6.png" alt="Fresh Avocado">
+            <h3>fresh avocado</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh avocado" data-price="49" data-image="images/products-6.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh avocado" data-price="49" data-image="images/products-6.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh carrot', '49', 'images/products-7.png')"></i>
+            </div>
+            <img src="images/products-7.png" alt="Fresh Carrot">
+            <h3>fresh carrot</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh carrot" data-price="49" data-image="images/products-7.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh carrot" data-price="49" data-image="images/products-7.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+          <div class="swiper-slide box">
+            <div class="product-actions">
+              <i class="fas fa-heart wishlist-icon" onclick="toggleWishlist('fresh lemon', '49', 'images/products-8.png')"></i>
+            </div>
+            <img src="images/products-8.png" alt="Fresh Lemon">
+            <h3>fresh lemon</h3>
+            <div class="price">₹49/- - ₹109/-</div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <a href="#" class="btn" data-product="fresh lemon" data-price="49" data-image="images/products-8.png" onclick="return addToCartFromBtn(this);">add to cart</a>
+          <div class="qty-quick" data-product="fresh lemon" data-price="49" data-image="images/products-8.png">
+            <button class="decr" onclick="return decQtyQuick(this);">-</button>
+            <span class="count">0</span>
+            <button class="incr" onclick="return incQtyQuick(this);">+</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+      <h1 class="heading">product <span>categories</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/cat-1.png" alt="Vegetables">
+          <h3>vegetables</h3>
+          <p>upto 45% off</p>
+          <a href="#" class="btn">shop now</a>
+        </div>
+        <div class="box">
+          <img src="images/cat-2.png" alt="Fresh Fruits">
+          <h3>fresh fruits</h3>
+          <p>upto 45% off</p>
+          <a href="#" class="btn">shop now</a>
+        </div>
+        <div class="box">
+          <img src="images/cat-3.png" alt="Dairy Products">
+          <h3>dairy products</h3>
+          <p>upto 45% off</p>
+          <a href="#" class="btn">shop now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="content">
+        <h3>monthly newsletter</h3>
+        <p>Subscribe to our newsletter for the latest deals and fresh product updates!</p>
+        <form action="">
+          <input type="email" placeholder="enter your email" class="box">
+          <input type="submit" value="subscribe" class="btn">
+        </form>
+      </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section class="main-content google-maps">
+      <p style="font-size: 18px; font-weight: bold; color: #ff6600;">
+        Visit us on Google Maps:
+        <a href="https://maps.app.goo.gl/FaPHxTjpZKDs3nXU9" target="_blank">View on Google Maps</a>
+      </p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d971.973122199019!2d77.8183319!3d12.9787277!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0fd0bfb8af55%3A0x5489c0a84ce4f47a!2sHrithik%20Stores!5e0!3m2!1sen!2sin!4v1737383929777!5m2!1sen!2sin" width="600" height="400" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>Hrithik Online Stores <i class="fas fa-shopping-basket"></i></h3>
+          <p>Your trusted partner for fresh, organic groceries delivered right to your doorstep.</p>
+          <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#" class="links"> <i class="fas fa-envelope"></i> hrithikonlinestores@gmail.com</a>
+          <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> Bangalore, India - 560117 </a>
+        </div>
+
+        <div class="box">
+          <h3>quick links</h3>
+          <a href="#home" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+          <a href="#features" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+          <a href="#products" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+          <a href="#categories" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
+        </div>
+
+        <div class="box">
+          <h3>newsletter</h3>
+          <p>subscribe for latest updates</p>
+          <input type="email" placeholder="your email" class="email">
+          <input type="submit" value="subscribe" class="btn">
+          <div class="payment-methods">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-paypal"></i>
+            <i class="fab fa-cc-amazon-pay"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="credit"> 
+        <p>&copy; 2024 Hrithik Stores. All rights reserved.</p>
+        <p>Developed and Maintained by <span>Bhaskar</span></p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          darkModeToggle.textContent = 'Disable Dark Mode';
+        } else {
+          darkModeToggle.textContent = 'Enable Dark Mode';
+        }
+      });
+    </script>
+  </body>
+</html>

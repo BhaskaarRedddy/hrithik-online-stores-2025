@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hrithik Online Stores</title>
+    <style>
+      /* Add custom styles here if necessary */
+    </style>
+    <link rel="icon" href="images/grocy.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo"><i class="fas fa-shopping-basket"></i> Hrithik Online Stores</a>
+      <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#features">features</a>
+        <a href="#products">products</a>
+        <a href="#categories">categories</a>
+        <a href="#reviews">reviews</a>
+      </nav>
+      <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-heart" id="wishlist-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+      </div>
+      <form action="" class="search-form">
+        <input type="text" id="search-box" placeholder="Search products, categories..." />
+        <label for="search-box" class="fas fa-search"></label>
+      </form>
+    </header>
+
+    <section class="home" id="home">
+      <div class="content">
+        <h3>Fresh and <span>Organic</span> Products for Your Home</h3>
+        <a href="#" class="btn">Shop Now</a>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <h1 class="heading">Our <span>Features</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/feature-1.png" alt="" />
+          <h3>Fresh and Organic</h3>
+        </div>
+        <div class="box">
+          <img src="images/feature-2.png" alt="" />
+          <h3>Free Delivery</h3>
+        </div>
+        <div class="box">
+          <img src="images/feature-3.png" alt="" />
+          <h3>Easy Payments</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <h1 class="heading">Our <span>Products</span></h1>
+      <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide box">
+            <img src="images/products-1.png" alt="" />
+            <h3>Fresh Orange</h3>
+            <div class="price">₹49/KG</div>
+            <a href="#" class="btn">Add to Cart</a>
+          </div>
+          <div class="swiper-slide box">
+            <img src="images/products-2.png" alt="" />
+            <h3>Fresh Onion</h3>
+            <div class="price">₹29/KG</div>
+            <a href="#" class="btn">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories" id="categories">
+      <h1 class="heading">Product <span>Categories</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/cat-1.png" alt="" />
+          <h3>Vegetables</h3>
+          <p>Up to 45% off</p>
+        </div>
+        <div class="box">
+          <img src="images/cat-2.png" alt="" />
+          <h3>Fresh Fruits</h3>
+          <p>Up to 45% off</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <h1 class="heading">Customer <span>Reviews</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <img src="images/user-1.png" alt="User 1" />
+          <p>Excellent products and timely delivery. Highly recommend!</p>
+          <h3>John Doe</h3>
+        </div>
+        <div class="box">
+          <img src="images/user-2.png" alt="User 2" />
+          <p>Fresh and organic items at great prices.</p>
+          <h3>Jane Smith</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="live-chat">
+      <h1 class="heading">Need Help? <span>Live Chat</span> with Us</h1>
+      <button class="btn" id="live-chat-btn">Chat Now</button>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Hrithik Stores. All rights reserved.</p>
+      <p>Developed and Maintained by Bhaskar</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
